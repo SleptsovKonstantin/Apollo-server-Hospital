@@ -19,11 +19,8 @@ const resolvers = {
       const result = bcrypt.compareSync(password, user.password)
 
       if (result) {
-        console.log("result", result);
         const newToken = createToken(login);
-        console.log("newToken", newToken);
         const responceUser = { newToken, login };
-        console.log("responceUser", responceUser);
         return responceUser
       }
 
@@ -108,7 +105,6 @@ const resolvers = {
       return data
     },
     createRecord: async (_, { input }) => {
-      console.log("input", input);
       await Record.create(input).then(() => {
         return data = Record.findAll({
           // where: { user: login },
